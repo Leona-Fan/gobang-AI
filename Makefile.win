@@ -1,0 +1,43 @@
+# Project: 五子棋
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o 输赢判断.o 某位置连子数目及禁手.o AI.o 评估函数.o 棋盘记录及复原.o
+LINKOBJ  = main.o 输赢判断.o 某位置连子数目及禁手.o AI.o 评估函数.o 棋盘记录及复原.o
+LIBS     = -L"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/lib" -L"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/include" -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/include" -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/86135/Desktop/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 五子棋.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+输赢判断.o: 输赢判断.c
+	$(CC) -c 输赢判断.c -o 输赢判断.o $(CFLAGS)
+
+某位置连子数目及禁手.o: 某位置连子数目及禁手.c
+	$(CC) -c 某位置连子数目及禁手.c -o 某位置连子数目及禁手.o $(CFLAGS)
+
+AI.o: AI.c
+	$(CC) -c AI.c -o AI.o $(CFLAGS)
+
+评估函数.o: 评估函数.c
+	$(CC) -c 评估函数.c -o 评估函数.o $(CFLAGS)
+
+棋盘记录及复原.o: 棋盘记录及复原.c
+	$(CC) -c 棋盘记录及复原.c -o 棋盘记录及复原.o $(CFLAGS)
